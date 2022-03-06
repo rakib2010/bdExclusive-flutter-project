@@ -1,12 +1,11 @@
 import 'dart:convert';
 
+import 'package:bdexclusive/helper/http_helper.dart';
+import 'package:bdexclusive/model/user_payload.dart';
+import 'package:bdexclusive/screens/registration_form.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:loginform/helper/http_helper.dart';
-import 'package:loginform/model/UserModel.dart';
-import 'package:loginform/screens/home_page.dart';
-import 'package:loginform/model/user_payload.dart';
-import 'package:loginform/screens/registration_form.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

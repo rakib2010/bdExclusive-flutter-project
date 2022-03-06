@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:loginform/model/UserModel.dart';
-import 'package:loginform/model/user_payload.dart';
+import 'package:bdexclusive/model/UserModel.dart';
+import 'package:bdexclusive/model/user_payload.dart';
 import 'constant.dart';
 import 'package:http/http.dart' as http;
 

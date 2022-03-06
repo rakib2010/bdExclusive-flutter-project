@@ -1,8 +1,8 @@
+import 'package:bdexclusive/helper/http_helper.dart';
+import 'package:bdexclusive/model/UserModel.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:loginform/helper/http_helper.dart';
-import 'package:loginform/model/UserModel.dart';
-import 'package:loginform/screens/login_page.dart';
+import 'login_page.dart';
 
 
 class registration extends StatelessWidget {

@@ -1,11 +1,11 @@
+import 'package:bdexclusive/components/horizontal_listview.dart';
+import 'package:bdexclusive/components/products.dart';
+import 'package:bdexclusive/screens/product_page.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_nullsafety/carousel_nullsafety.dart';
-import 'package:loginform/components/all_product.dart';
-import 'package:loginform/components/horizontal_listview.dart';
-import 'package:loginform/components/products.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:loginform/screens/product_page.dart';
+
 
 
 import 'login_page.dart';
