@@ -177,7 +177,7 @@ class _homePageState extends State<homePage> {
 
 
 
-<<<<<<< HEAD
+
 
 
 
@@ -206,8 +206,7 @@ class _homePageState extends State<homePage> {
       //   ],
       // ),
 
-=======
->>>>>>> 1ce14eabd514fb40f36a90df7480fa409a94001b
+
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.indigo,
         items: <Widget>[
