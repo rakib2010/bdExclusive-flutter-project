@@ -6,13 +6,13 @@ class HorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 105.0,
+      height: 95.0,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
           MyListView(
             img_location: 'assets/categories_icon/male.png',
-            img_caption: 'Male Fashion',
+            img_caption: 'Male',
           ),
           MyListView(
             img_location: 'assets/categories_icon/woman.png',
@@ -41,17 +41,20 @@ class MyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 120.0,
-      child: InkWell(
-        onTap: (){},
-        child: ListTile(
-          title: Image.asset(img_location),
-          subtitle: Container(
-            alignment: Alignment.topCenter,
-            child: Text(img_caption),
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Container(
+        width: 90.0,
+        child: InkWell(
+          onTap: (){},
+          child: ListTile(
+            title: Image.asset(img_location),
+            subtitle: Container(
+              alignment: Alignment.topCenter,
+              child: Text(img_caption),
+            ),
 
+          ),
         ),
       ),
     );
