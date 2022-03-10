@@ -114,6 +114,7 @@ class _homePageState extends State<homePage> {
                   AssetImage('assets/images/c2.jpg'),
                   AssetImage('assets/images/c3.jpg'),
                   AssetImage('assets/images/c4.jpg'),
+                  AssetImage('assets/images/c5.jpg'),
                 ],
                 autoplay: true,
                 dotSize: 6.0,
