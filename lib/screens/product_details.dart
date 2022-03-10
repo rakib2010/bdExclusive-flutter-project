@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'cart_page.dart';
+
 
 class productDetails extends StatefulWidget {
 
@@ -38,19 +40,12 @@ class _productDetailsState extends State<productDetails> {
         actions: <Widget>[
           IconButton(
             icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              // do something
-            },
-          ),
-          IconButton(
-            icon: Icon(
               Icons.shopping_cart,
               color: Colors.white,
             ),
             onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const CartPage()));
               // do something
             },
           ),
@@ -118,7 +113,7 @@ class _productDetailsState extends State<productDetails> {
                     )
 
                 ),
-                IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart), color: Colors.deepOrangeAccent,),
+                IconButton(onPressed: (){}, icon: Icon(Icons.add_shopping_cart), color: Colors.deepOrangeAccent,),
                 IconButton(onPressed: (){}, icon: Icon(Icons.favorite), color: Colors.red,),
               ],
 

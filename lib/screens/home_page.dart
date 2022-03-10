@@ -1,5 +1,6 @@
 import 'package:bdexclusive/components/horizontal_listview.dart';
 import 'package:bdexclusive/components/products.dart';
+import 'package:bdexclusive/screens/cart_page.dart';
 import 'package:bdexclusive/screens/product_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -39,6 +40,9 @@ class _homePageState extends State<homePage> {
               color: Colors.white,
             ),
             onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const CartPage()));
+
               // do something
             },
           ),
@@ -78,6 +82,18 @@ class _homePageState extends State<homePage> {
               },
 
             ),
+
+            ListTile(
+              leading: Icon(Icons.shopping_cart_rounded),
+              title: Text('My Cart'),
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const CartPage()));
+
+              },
+
+            ),
+
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
