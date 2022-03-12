@@ -32,50 +32,6 @@ class _ProductsState extends State<Products> {
     getAllProduct();
   }
 
-  // var product = [
-  //   {
-  //     "id":1,
-  //     "image":"assets/products/j1.jpg",
-  //     "name":"Blazer",
-  //     "price":12500,
-  //     "remarks":"Export Quality"
-  //   },
-  //   {
-  //     "id":2,
-  //     "image":"assets/products/w1.jpg",
-  //     "name":"Female",
-  //     "price":12500,
-  //     "remarks":"Export Quality"
-  //   },
-  //   {
-  //     "id":3,
-  //     "image":"assets/products/e1.jpg",
-  //     "name":"Electronics",
-  //     "price":12500,
-  //     "remarks":"Export Quality"
-  //   },
-  //   {
-  //     "id":4,
-  //     "image":"assets/products/j2.jpg",
-  //     "name":"Blazer",
-  //     "price":12500,
-  //     "remarks":"Export Quality"
-  //   },
-  //   {
-  //     "id":5,
-  //     "image":"assets/products/w2.jpg",
-  //     "name":"Blazer",
-  //     "price":12500,
-  //     "remarks":"Export Quality"
-  //   },
-  //   {
-  //     "id":6,
-  //     "image":"assets/products/e2.jpg",
-  //     "name":"Blazer",
-  //     "price":12500,
-  //     "remarks":"Export Quality"
-  //   },
-  // ];
 
   @override
   Widget build(BuildContext context) {
