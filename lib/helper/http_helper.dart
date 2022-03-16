@@ -28,7 +28,28 @@ Future<http.Response> signIn(UserPayload userPayload) async {
 
 Future<http.Response> productShowById(String id) async {
   final response = await http
-      .get(Uri.parse(getProductByIdApi + id));
+      .get(Uri.parse(getProductByIdApi + id)); //show By id
+  return  response;
+
+}
+
+Future<http.Response> findByCategoryIdOne() async {
+  final response = await http
+      .get(Uri.parse(getProductByCateIdApi+'1')); //male Fashion
+  return  response;
+
+}
+
+Future<http.Response> findByCategoryIdTwo() async {
+  final response = await http
+      .get(Uri.parse(getProductByCateIdApi+'2')); //female Fashion
+  return  response;
+
+}
+
+Future<http.Response> findByCategoryIdThree() async {
+  final response = await http
+      .get(Uri.parse(getProductByCateIdApi+'3')); //electronics
   return  response;
 
 }

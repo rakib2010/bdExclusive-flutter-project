@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:bdexclusive/helper/constant.dart';
 import 'package:bdexclusive/helper/http_helper.dart';
 import 'package:bdexclusive/model/ProductModel.dart';
 import 'package:flutter/cupertino.dart';

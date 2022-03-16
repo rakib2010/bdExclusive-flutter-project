@@ -1,7 +1,6 @@
 import 'package:bdexclusive/components/horizontal_listview.dart';
-import 'package:bdexclusive/components/products.dart';
+import 'package:bdexclusive/components/recent_product.dart';
 import 'package:bdexclusive/screens/cart_page.dart';
-import 'package:bdexclusive/screens/product_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -165,7 +164,7 @@ class _homePageState extends State<homePage> {
                 Spacer(),
                 InkWell(
                   child:
-                  Text('See All', style: TextStyle(fontSize: 18.0),),
+                  Text('Show All', style: TextStyle(fontSize: 18.0),),
                   onTap: (){
                     Navigator.pushNamed(context, "/allproducts");
                   },

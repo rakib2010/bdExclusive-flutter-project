@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:bdexclusive/constants/routes.dart';
 import 'package:bdexclusive/helper/constant.dart';
 import 'package:bdexclusive/model/ProductModel.dart';
-import 'package:bdexclusive/screens/product_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -27,6 +26,9 @@ class _ProductsState extends State<ProductsAll> {
       });
     } catch (err) {}
   }
+
+
+
 
   @override
   void initState() {
