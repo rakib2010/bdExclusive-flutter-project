@@ -24,3 +24,11 @@ Future<http.Response> signIn(UserPayload userPayload) async {
   return response;
 
 }
+
+
+Future<http.Response> productShowById(String id) async {
+  final response = await http
+      .get(Uri.parse(getProductByIdApi + id));
+  return  response;
+
+}

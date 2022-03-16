@@ -74,7 +74,7 @@ class Single_prod extends StatelessWidget {
           child: Material(
             child: InkWell(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => productDetails(
+                  builder: (context) => ProductDetails(
                         product_details_name: prod_name,
                         product_details_image: prod_img,
                         product_details_price: prod_price,

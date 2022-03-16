@@ -167,10 +167,7 @@ class _homePageState extends State<homePage> {
                   child:
                   Text('See All', style: TextStyle(fontSize: 18.0),),
                   onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AllProductPage()),
-                    );
+                    Navigator.pushNamed(context, "/allproducts");
                   },
 
                 )

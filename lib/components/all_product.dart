@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:bdexclusive/constants/routes.dart';
 import 'package:bdexclusive/helper/constant.dart';
+import 'package:bdexclusive/model/ProductModel.dart';
 import 'package:bdexclusive/screens/product_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,15 +14,16 @@ class ProductsAll extends StatefulWidget {
 }
 
 class _ProductsState extends State<ProductsAll> {
-  var product_list = [];
+  List<ProductModel> product_list = [];
 
   void getAllProduct() async {
     try {
       final res = await get(Uri.parse(getAllProductApi));
       final jsonData = jsonDecode(res.body) as List;
+      product_list =  jsonData.map((e) => ProductModel.fromMap(e)).toList();
 
       setState(() {
-        product_list = jsonData;
+        // product_list = jsonData;
       });
     } catch (err) {}
   }
@@ -30,6 +33,7 @@ class _ProductsState extends State<ProductsAll> {
     // TODO: implement initState
     super.initState();
     getAllProduct();
+
   }
 
 
@@ -44,10 +48,11 @@ class _ProductsState extends State<ProductsAll> {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Single_prod(
-              prod_name: product_list[index]['productName'],
-              prod_img: product_list[index]['imageUri'],
-              prod_price: product_list[index]['price'],
-              prod_remarks: product_list[index]['remarks'],
+              id: product_list[index].id,
+              prod_name: product_list[index].productName,
+              prod_img: product_list[index].imageUri,
+              prod_price: product_list[index].price,
+              prod_remarks: product_list[index].remarks,
             ),
           );
         });
@@ -55,12 +60,14 @@ class _ProductsState extends State<ProductsAll> {
 }
 
 class Single_prod extends StatelessWidget {
+  final id;
   final prod_name;
   final prod_img;
   final prod_price;
   final prod_remarks;
 
   Single_prod({
+    this.id,
     this.prod_name,
     this.prod_img,
     this.prod_price,
@@ -74,13 +81,10 @@ class Single_prod extends StatelessWidget {
           tag: new Text('bdExclusive'),
           child: Material(
             child: InkWell(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => productDetails(
-                    product_details_name: prod_name,
-                    product_details_image: prod_img,
-                    product_details_price: prod_price,
-                    product_details_remarks: prod_remarks,
-                  ))),
+              onTap: () {
+
+                Navigator.pushNamed(context, Routes.productDetails,arguments: id);
+              } ,
               child: GridTile(
 
                 child: Image.network(
