@@ -5,7 +5,7 @@ import 'package:bdexclusive/model/ProductModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'cart_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'cart_screen.dart';
 
 class ProductDetails extends StatefulWidget {
   final product_details_name;
@@ -33,7 +33,8 @@ class _ProductDetailsState extends State<ProductDetails> {
       remarks: "",
       imageUri: "",
       imageName: "",
-      categoryId: 0);
+      categoryId: 0
+  );
 
 
 
@@ -68,7 +69,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             onPressed: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const CartPage()));
+                  MaterialPageRoute(builder: (context) => const AddCard()));
               // do something
             },
           ),

@@ -61,3 +61,9 @@ Future<http.Response> saveCart(CartModel cartModel) async {
   return response;
 
 }
+
+Future<http.Response> deleteCartById(int index) async {
+  final response = await http.get(Uri.parse(deleteCartByIdApi+index.toString()));
+  return  response;
+
+}
