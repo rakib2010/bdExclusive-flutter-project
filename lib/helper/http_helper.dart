@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:bdexclusive/model/CartModel.dart';
 import 'package:bdexclusive/model/UserModel.dart';
 import 'package:bdexclusive/model/user_payload.dart';
 import 'constant.dart';
@@ -51,5 +52,12 @@ Future<http.Response> findByCategoryIdThree() async {
   final response = await http
       .get(Uri.parse(getProductByCateIdApi+'3')); //electronics
   return  response;
+
+}
+
+Future<http.Response> saveCart(CartModel cartModel) async {
+  final response = await http.post(Uri.parse(addToCartApi),
+      headers: requestHeaders, body: jsonEncode(cartModel.toMap()));
+  return response;
 
 }

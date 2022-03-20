@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:bdexclusive/helper/http_helper.dart';
+import 'package:bdexclusive/model/CartModel.dart';
 import 'package:bdexclusive/model/ProductModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'cart_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductDetails extends StatefulWidget {
   final product_details_name;
@@ -128,7 +128,36 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 )),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+
+                    String productName = productModel.productName;
+                    int quantity = productModel.quantity;
+                    double price = productModel.price;
+                    String remarks = productModel.remarks;
+                    String imageUri = productModel.imageUri;
+                    
+                    CartModel cartModel = new CartModel(
+                        id: 0,
+                        productName: productName,
+                        quantity: quantity,
+                        price: price,
+                        remarks: remarks,
+                        imageUri: imageUri
+                    );
+
+
+                    saveCart(cartModel).then((res) {
+                      print(res.body);
+                    });
+
+
+
+                    
+
+
+
+
+                  },
                   icon: Icon(Icons.add_shopping_cart),
                   color: Colors.deepOrangeAccent,
                 ),
