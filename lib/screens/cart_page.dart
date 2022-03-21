@@ -1,22 +1,57 @@
+import 'dart:convert';
 
-import 'package:bdexclusive/components/cart_items.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bdexclusive/helper/constant.dart';
+import 'package:bdexclusive/helper/http_helper.dart';
+import 'package:bdexclusive/model/CartModel.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
-
-class CartPage extends StatefulWidget {
-  const CartPage({Key? key}) : super(key: key);
+class AddCart extends StatefulWidget {
+  const AddCart({Key? key}) : super(key: key);
 
   @override
-  _CartPageState createState() => _CartPageState();
+  _AddCartState createState() => _AddCartState();
 }
 
-class _CartPageState extends State<CartPage> {
+class _AddCartState extends State<AddCart> {
+  int _currentIndex = 0;
+  List<CartModel> cartItems = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getCart();
+  }
+
+  void getCart() async {
+    try {
+      final res = await get(Uri.parse(getCartItemsApi));
+      final jsonData = jsonDecode(res.body) as List;
+      cartItems = jsonData.map((e) => CartModel.fromMap(e)).toList();
+      calculate();
+
+      setState(() {
+        // product_list = jsonData;
+      });
+    } catch (err) {
+      print(err);
+    }
+  }
+
+  double Total = 0.0;
+  void calculate() {
+    Total = 0.0;
+    for (var index = 0; index < cartItems.length; index++) {
+      Total += cartItems[index].price;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Shopping Cart"),
+        title: Text("Favorite Cart"),
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -27,36 +62,89 @@ class _CartPageState extends State<CartPage> {
               // do something
             },
           ),
-
         ],
       ),
-
-      body: CartItems(),
-
+      body: Column(
+        children: [
+          Container(
+            height: 650.0,
+            color: Colors.white,
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (BuildContext, index) {
+                      return Card(
+                        color: Colors.white70,
+                        elevation: 2.0,
+                        child: ListTile(
+                          leading: Image.network(cartItems[index].imageUri),
+                          title: Text(
+                            cartItems[index].productName +
+                                ' ' +
+                                cartItems[index].quantity.toString() +
+                                'p',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text(
+                            cartItems[index].price.toString() + ' TK',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(
+                              Icons.delete,
+                              color: Colors.redAccent,
+                              size: 40,
+                            ),
+                            onPressed: () async {
+                              await deleteCartById(cartItems[index].id);
+                              getCart();
+                              print(cartItems[index].id);
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                    itemCount: cartItems.length,
+                    shrinkWrap: true,
+                    padding: EdgeInsets.all(8),
+                    scrollDirection: Axis.vertical,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: Colors.white70,
         child: Row(
           children: [
-            Expanded(child: ListTile(
-              title: Text('Total:'),
-              subtitle: Text('12800 TK'),
+            Expanded(
+                child: ListTile(
+              title: Text(
+                'Total:',
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                "BDT " + Total.toString() + " TK",
+                style: TextStyle(
+                    color: Colors.deepOrangeAccent,
+                    fontWeight: FontWeight.bold),
+              ),
             )),
             Expanded(
-                child: MaterialButton(onPressed: (){},
-                  child: Text('Check out', style: TextStyle(color: Colors.white),),
-                  color: Colors.indigo,
-
-                )
-            )
+                child: MaterialButton(
+              onPressed: () {},
+              child: Text(
+                'Check out',
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.indigo,
+            ))
           ],
         ),
       ),
-
-
-
-
-
-
     );
   }
 }

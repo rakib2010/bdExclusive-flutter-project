@@ -1,6 +1,5 @@
 import 'package:bdexclusive/components/horizontal_listview.dart';
 import 'package:bdexclusive/components/recent_product.dart';
-import 'package:bdexclusive/screens/cart_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +7,7 @@ import 'package:carousel_nullsafety/carousel_nullsafety.dart';
 
 
 
+import 'cart_page.dart';
 import 'login_page.dart';
 
 class homePage extends StatefulWidget {
@@ -40,7 +40,7 @@ class _homePageState extends State<homePage> {
             ),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CartPage()));
+                  builder: (context) => const AddCart()));
 
               // do something
             },
@@ -87,7 +87,7 @@ class _homePageState extends State<homePage> {
               title: Text('My Cart'),
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const CartPage()));
+                    builder: (context) => const AddCart()));
 
               },
 

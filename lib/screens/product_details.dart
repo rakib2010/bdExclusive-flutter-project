@@ -5,19 +5,9 @@ import 'package:bdexclusive/model/ProductModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'cart_page.dart';
-import 'cart_screen.dart';
+import 'cart_page.dart';
 
 class ProductDetails extends StatefulWidget {
-  final product_details_name;
-  final product_details_image;
-  final product_details_price;
-  final product_details_remarks;
-
-  ProductDetails(
-      {this.product_details_name,
-      this.product_details_image,
-      this.product_details_price,
-      this.product_details_remarks});
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -69,7 +59,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             ),
             onPressed: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const AddCard()));
+                  MaterialPageRoute(builder: (context) => const AddCart()));
               // do something
             },
           ),
