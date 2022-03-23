@@ -31,7 +31,7 @@ class HorizontalList extends StatelessWidget {
                 width: 95,
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "/allproducts");
+                    Navigator.pushNamed(context, "/maleFashion");
                   },
                   child: ListTile(
                     title: Image.asset('assets/categories_icon/male.png'),
@@ -62,7 +62,7 @@ class HorizontalList extends StatelessWidget {
                 width: 95,
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "/allproducts");
+                    Navigator.pushNamed(context, "/femaleFashion");
                   },
                   child: ListTile(
                     title: Image.asset('assets/categories_icon/woman.png'),
@@ -93,7 +93,7 @@ class HorizontalList extends StatelessWidget {
                 width: 95,
                 child: InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, "/allproducts");
+                    Navigator.pushNamed(context, "/electronics");
                   },
                   child: ListTile(
                     title: Image.asset('assets/categories_icon/electronics.png'),

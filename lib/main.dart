@@ -1,4 +1,7 @@
 import 'package:bdexclusive/constants/routes.dart';
+import 'package:bdexclusive/screens/electronics_page.dart';
+import 'package:bdexclusive/screens/femaleFashion_page.dart';
+import 'package:bdexclusive/screens/maleFashion_page.dart';
 import 'package:bdexclusive/screens/product_details.dart';
 import 'package:bdexclusive/screens/product_page.dart';
 import 'package:bdexclusive/screens/splash_screen.dart';
@@ -19,6 +22,9 @@ class MyApp extends StatelessWidget {
         Routes.root: (context) => SplashScreen(),
         Routes.allproducts: (context) => AllProductPage(),
         Routes.productDetails: (context) => ProductDetails(),
+        Routes.maleFashion: (context) => MaleFashionPage(),
+        Routes.femaleFashion: (context) => FemaleFashionPage(),
+        Routes.electronics: (context) => ElectronicsPage(),
       },
     );
   }

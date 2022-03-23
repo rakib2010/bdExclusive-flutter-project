@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:bdexclusive/helper/constant.dart';
 import 'package:bdexclusive/helper/http_helper.dart';
 import 'package:bdexclusive/model/CartModel.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddCart extends StatefulWidget {
   const AddCart({Key? key}) : super(key: key);
@@ -68,7 +68,7 @@ class _AddCartState extends State<AddCart> {
       body: Column(
         children: [
           Container(
-            height: 580.0,
+            height: 450.0,
             color: Colors.white,
             child: Column(
               children: [
@@ -81,15 +81,14 @@ class _AddCartState extends State<AddCart> {
                         child: ListTile(
                           leading: Image.network(cartItems[index].imageUri),
                           title: Text(
-                            cartItems[index].productName +
-                                ' ' +
-                                cartItems[index].quantity.toString() +
-                                'p',
+                            cartItems[index].productName,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           subtitle: Text(
                             cartItems[index].price.toString() + ' TK',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orange),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.orange),
                           ),
                           trailing: IconButton(
                             icon: Icon(
@@ -103,7 +102,8 @@ class _AddCartState extends State<AddCart> {
                               print(cartItems[index].id);
 
                               Fluttertoast.showToast(
-                                  msg: "${cartItems[index].productName} is removed!",
+                                  msg:
+                                      "${cartItems[index].productName} is removed!",
                                   toastLength: Toast.LENGTH_LONG,
                                   gravity: ToastGravity.BOTTOM,
                                   timeInSecForIosWeb: 3,
@@ -145,11 +145,17 @@ class _AddCartState extends State<AddCart> {
             )),
             Expanded(
                 child: MaterialButton(
-              onPressed: () {
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString("price", Total.toString());
+                prefs.setString("totalItem", cartItems.length.toString());
+
+                var snackBar = SnackBar(content: Text('Your Order is Placed successfully'));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
               },
               child: Text(
-                'Next',
+                'Chekcout',
                 style: TextStyle(color: Colors.white),
               ),
               color: Colors.indigo,

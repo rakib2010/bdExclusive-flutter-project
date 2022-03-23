@@ -1,32 +1,65 @@
+
+
+
 import 'dart:convert';
+
 import 'package:bdexclusive/constants/routes.dart';
-import 'package:bdexclusive/helper/constant.dart';
 import 'package:bdexclusive/helper/http_helper.dart';
 import 'package:bdexclusive/model/ProductModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 
-class ProductsAll extends StatefulWidget {
+
+
+class MaleFashionPage extends StatelessWidget {
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+
+        title: Text('Online Shopping'),
+      ),
+      body:
+      Container(
+        child: MaleFashion(),
+      ),
+
+
+
+    );
+  }
+}
+
+
+
+
+
+
+
+class MaleFashion extends StatefulWidget {
   @override
   _ProductsState createState() => _ProductsState();
 }
 
-class _ProductsState extends State<ProductsAll> {
+class _ProductsState extends State<MaleFashion> {
   List<ProductModel> product_list = [];
 
-  void getAllProduct() async {
-    try {
-      final res = await get(Uri.parse(getAllProductApi));
-      final jsonData = jsonDecode(res.body) as List;
-      product_list =  jsonData.map((e) => ProductModel.fromMap(e)).toList();
-
+  void getProductById() {
+    findByCategoryIdOne().then((res) {
+      var data = jsonDecode(res.body) as List<dynamic>;
+      product_list =  data.map((e) => ProductModel.fromMap(e)).toList();
       setState(() {
-        // product_list = jsonData;
+
+
       });
-    } catch (err) {}
+    });
   }
+
+
 
 
 
@@ -34,7 +67,9 @@ class _ProductsState extends State<ProductsAll> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getAllProduct();
+    getProductById();
+    print(product_list);
+
   }
 
 

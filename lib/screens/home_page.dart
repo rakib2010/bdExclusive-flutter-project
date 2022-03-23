@@ -1,5 +1,6 @@
 import 'package:bdexclusive/components/horizontal_listview.dart';
 import 'package:bdexclusive/components/recent_product.dart';
+import 'package:bdexclusive/screens/profile_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'package:carousel_nullsafety/carousel_nullsafety.dart';
 
 import 'cart_page.dart';
 import 'login_page.dart';
+import 'order_page.dart';
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -77,6 +79,19 @@ class _homePageState extends State<homePage> {
               leading: Icon(Icons.account_circle),
               title: Text('Profile'),
               onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ProfilePage()));
+
+              },
+
+            ),
+
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('My Orders'),
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => OrderPage()));
 
               },
 
