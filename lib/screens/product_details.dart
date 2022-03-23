@@ -4,7 +4,7 @@ import 'package:bdexclusive/model/CartModel.dart';
 import 'package:bdexclusive/model/ProductModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'cart_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'cart_page.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -111,11 +111,44 @@ class _ProductDetailsState extends State<ProductDetails> {
                     child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      String productName = productModel.productName;
+                      int quantity = productModel.quantity;
+                      double price = productModel.price;
+                      String remarks = productModel.remarks;
+                      String imageUri = productModel.imageUri;
+
+                      CartModel cartModel = new CartModel(
+                          id: 0,
+                          productName: productName,
+                          quantity: quantity,
+                          price: price,
+                          remarks: remarks,
+                          imageUri: imageUri
+                      );
+
+
+                      saveCart(cartModel).then((res) {
+
+
+
+                      });
+                        Fluttertoast.showToast(
+                        msg: "Add to Cart Successfull",
+                        toastLength: Toast.LENGTH_LONG,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 3,
+                        backgroundColor: Colors.white,
+                        textColor: Colors.green,
+                        fontSize: 20.0);
+
+
+
+                    },
                     color: Colors.indigoAccent,
                     textColor: Colors.white,
                     elevation: 0.2,
-                    child: Text("Order Now"),
+                    child: Text("Add to Cart"),
                   ),
                 )),
                 IconButton(

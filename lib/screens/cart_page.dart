@@ -4,6 +4,7 @@ import 'package:bdexclusive/helper/constant.dart';
 import 'package:bdexclusive/helper/http_helper.dart';
 import 'package:bdexclusive/model/CartModel.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 
 class AddCart extends StatefulWidget {
@@ -67,7 +68,7 @@ class _AddCartState extends State<AddCart> {
       body: Column(
         children: [
           Container(
-            height: 650.0,
+            height: 580.0,
             color: Colors.white,
             child: Column(
               children: [
@@ -88,7 +89,7 @@ class _AddCartState extends State<AddCart> {
                           ),
                           subtitle: Text(
                             cartItems[index].price.toString() + ' TK',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orange),
                           ),
                           trailing: IconButton(
                             icon: Icon(
@@ -100,6 +101,15 @@ class _AddCartState extends State<AddCart> {
                               await deleteCartById(cartItems[index].id);
                               getCart();
                               print(cartItems[index].id);
+
+                              Fluttertoast.showToast(
+                                  msg: "${cartItems[index].productName} is removed!",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 3,
+                                  backgroundColor: Colors.white60,
+                                  textColor: Colors.green,
+                                  fontSize: 20.0);
                             },
                           ),
                         ),
@@ -135,9 +145,11 @@ class _AddCartState extends State<AddCart> {
             )),
             Expanded(
                 child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+
+              },
               child: Text(
-                'Check out',
+                'Next',
                 style: TextStyle(color: Colors.white),
               ),
               color: Colors.indigo,
