@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -8,6 +9,12 @@ class ProfilePage extends StatefulWidget {
 
 class MapScreenState extends State<ProfilePage>
     with SingleTickerProviderStateMixin {
+
+  String name = '';
+  String username = '';
+  String password = '';
+
+
   bool _status = true;
   final FocusNode myFocusNode = FocusNode();
 
@@ -15,6 +22,18 @@ class MapScreenState extends State<ProfilePage>
   void initState() {
     // TODO: implement initState
     super.initState();
+    getLocalData();
+  }
+
+  getLocalData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState((){
+      name = prefs.getString('name')!;
+      username = prefs.getString('username')!;
+      password = prefs.getString('password')!;
+
+    });
+
   }
 
   @override
@@ -132,7 +151,7 @@ class MapScreenState extends State<ProfilePage>
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
                                   new Flexible(
-                                    child: Text('Rakib Hasan'),
+                                    child: Text(name.toString()),
                                   ),
                                 ],
                               )),
@@ -147,7 +166,7 @@ class MapScreenState extends State<ProfilePage>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Email Address',
+                                        'User Name',
                                         style: TextStyle(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.bold),
@@ -163,7 +182,7 @@ class MapScreenState extends State<ProfilePage>
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
                                   new Flexible(
-                                    child: Text('rakib.hasan.asia@gmail.com')
+                                    child: Text(username.toString())
                                   ),
                                 ],
                               )),
@@ -178,7 +197,7 @@ class MapScreenState extends State<ProfilePage>
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       new Text(
-                                        'Mobile',
+                                        'Password',
                                         style: TextStyle(
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.bold),
@@ -194,7 +213,7 @@ class MapScreenState extends State<ProfilePage>
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
                                   new Flexible(
-                                    child: Text('+880 1771886602')
+                                    child: Text(password.toString())
                                   ),
                                 ],
                               )),
