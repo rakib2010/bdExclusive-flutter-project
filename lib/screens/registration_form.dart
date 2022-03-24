@@ -2,6 +2,7 @@ import 'package:bdexclusive/helper/http_helper.dart';
 import 'package:bdexclusive/model/UserModel.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'login_page.dart';
 
 
@@ -32,12 +33,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  save() {
+  save() async {
     String name = _nameController.value.text;
     String username = _usernameController.value.text;
     String password = _passwordController.value.text;
     var user = User(name: name, username: username, password: password);
     print(user);
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("name", name);
+    prefs.setString("username", username);
+    prefs.setString("password", password);
 
     signUp(user).then((res) {
       print(res.body);

@@ -87,7 +87,7 @@ class _homePageState extends State<homePage> {
             ),
 
             ListTile(
-              leading: Icon(Icons.account_circle),
+              leading: Icon(Icons.payment_rounded),
               title: Text('My Orders'),
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(

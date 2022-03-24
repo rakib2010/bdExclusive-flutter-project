@@ -13,8 +13,8 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
-  String items ='';
-  String totalPrice ='';
+  int items =0;
+  double totalPrice =0.0;
 
 
 
@@ -32,8 +32,8 @@ class _OrderPageState extends State<OrderPage> {
   getLocalData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState((){
-      items = prefs.getString('totalItem')!;
-      totalPrice = prefs.getString('price')!;
+      items = prefs.getInt('totalItem')!;
+      totalPrice = prefs.getDouble('price')!;
     });
 
   }
@@ -61,15 +61,15 @@ class _OrderPageState extends State<OrderPage> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 30.0, left: 8.0, right: 8.0),
-              child: const ListTile(
+              child: ListTile(
 
                 title: Text(
                     'Name: Rakib Hasan',
                     style: TextStyle(fontSize: 20.0)
                 ),
                 subtitle: Text(
-                    'Total Item : 6'+'\n'+
-                        'Total Price: 24000 Tk',
+                    'Total Item : '+items.toString()+' Piece'+'\n'+
+                        'Total Price: '+ totalPrice.toString()+' Tk',
                     style: TextStyle(fontSize: 18.0)
                 ),
 

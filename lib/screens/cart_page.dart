@@ -146,9 +146,12 @@ class _AddCartState extends State<AddCart> {
             Expanded(
                 child: MaterialButton(
               onPressed: () async {
+                double p = Total;
+                int i = cartItems.length;
+
                 SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.setString("price", Total.toString());
-                prefs.setString("totalItem", cartItems.length.toString());
+                prefs.setDouble("price", p);
+                prefs.setInt("totalItem", i);
 
                 var snackBar = SnackBar(content: Text('Your Order is Placed successfully'));
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
